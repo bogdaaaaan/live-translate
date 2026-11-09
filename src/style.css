@@ -1,0 +1,43 @@
+:root { --bg:#111316; --fg:#f2f2f2; --mut:#8a9099; --acc:#4ea1ff; --fs:28px; }
+* { box-sizing:border-box; }
+html, body { margin:0; height:100%; background:var(--bg); color:var(--fg);
+  font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+body { display:flex; flex-direction:column; }
+header { display:flex; gap:8px; align-items:center; flex-wrap:wrap; padding:10px 14px;
+  border-bottom:1px solid #2a2e35; background:#16191d; }
+button, select, input[type=text], textarea { font:inherit; font-size:14px; background:#252a31; color:var(--fg);
+  border:1px solid #353b44; border-radius:8px; padding:7px 12px; }
+button, select { cursor:pointer; }
+button.primary { background:var(--acc); border-color:var(--acc); color:#fff; font-weight:600; min-width:90px; }
+button.primary.stop { background:#d9534f; border-color:#d9534f; }
+#mode { font-weight:600; }
+label { font-size:14px; color:var(--mut); display:flex; align-items:center; gap:6px; }
+#status { font-size:13px; color:var(--mut); margin-left:auto; display:flex; align-items:center; gap:8px; }
+.dot { width:10px; height:10px; border-radius:50%; background:#555; }
+.dot.on { background:#3ecf6e; animation:pulse 1.5s infinite; }
+@keyframes pulse { 50% { opacity:.35; } }
+#meter { width:70px; height:10px; background:#252a31; border:1px solid #353b44; border-radius:5px; overflow:hidden; }
+#meter > div { height:100%; width:0; background:#3ecf6e; transition:width .08s; }
+body.subs .tr-only { display:none; }
+#ctx { display:none; padding:12px 14px; background:#16191d; border-bottom:1px solid #2a2e35; gap:10px; flex-direction:column; }
+#ctx.open { display:flex; }
+#ctx .row { display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap; }
+#ctx .row > label:first-child { width:110px; padding-top:8px; }
+#topic { flex:1; min-width:240px; }
+#vocab { flex:1; min-width:240px; height:70px; resize:vertical; }
+#ctx small { color:var(--mut); font-size:12px; }
+main { flex:1; overflow-y:auto; padding:18px 22px 30vh; }
+/* translation mode: one sentence per block */
+.line { margin:0 0 20px; max-width:1100px; }
+.en { font-size:var(--fs); line-height:1.35; }
+.de { font-size:calc(var(--fs) * .55); color:var(--mut); margin-top:3px; }
+body.hide-de .de { display:none; }
+.pending .en { color:#aab2bd; font-style:italic; }
+#interim.empty, body.subs #interim { display:none; }
+#interim .de { color:#c3cad3; }
+#interim .de .live { color:var(--mut); }
+/* subtitle mode: one sentence per paragraph */
+p.sub { font-size:var(--fs); line-height:1.45; margin:0 0 .7em; max-width:1100px; }
+p.sub .live { color:#9aa3ae; }
+#hint { color:var(--mut); font-size:16px; line-height:1.6; max-width:700px; }
+#hint b { color:var(--fg); }
